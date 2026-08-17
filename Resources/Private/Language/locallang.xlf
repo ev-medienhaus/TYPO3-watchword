@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="de" datatype="plaintext" original="messages" date="2026-07-27" product-name="watchword">
+        <header/>
+        <body>
+            <trans-unit id="module.title">
+                <source>Losungen</source>
+            </trans-unit>
+            <trans-unit id="mlang_tabs_tab">
+                <source>Losungen</source>
+            </trans-unit>
+            <trans-unit id="mlang_labels_tablabel">
+                <source>Losungen importieren und verwalten</source>
+            </trans-unit>
+            <trans-unit id="mlang_labels_tabdescr">
+                <source>Import und Verwaltung der täglichen Losungen</source>
+            </trans-unit>
+
+            <trans-unit id="module.index.title">
+                <source>Losungen</source>
+            </trans-unit>
+            <trans-unit id="module.index.filter.year">
+                <source>Jahr</source>
+            </trans-unit>
+            <trans-unit id="module.index.filter.year.all">
+                <source>Alle Jahre</source>
+            </trans-unit>
+            <trans-unit id="module.index.filter.submit">
+                <source>Filtern</source>
+            </trans-unit>
+            <trans-unit id="module.index.import_button">
+                <source>Excel/CSV importieren</source>
+            </trans-unit>
+            <trans-unit id="module.index.column.date">
+                <source>Datum</source>
+            </trans-unit>
+            <trans-unit id="module.index.column.weekday">
+                <source>Wochentag</source>
+            </trans-unit>
+            <trans-unit id="module.index.column.sunday_name">
+                <source>Sonntag / Feiertag</source>
+            </trans-unit>
+            <trans-unit id="module.index.column.watchword">
+                <source>Losung</source>
+            </trans-unit>
+            <trans-unit id="module.index.column.teaching">
+                <source>Lehrtext</source>
+            </trans-unit>
+            <trans-unit id="module.index.column.actions">
+                <source>Aktionen</source>
+            </trans-unit>
+            <trans-unit id="module.index.edit">
+                <source>Bearbeiten</source>
+            </trans-unit>
+            <trans-unit id="module.index.delete">
+                <source>Löschen</source>
+            </trans-unit>
+            <trans-unit id="module.index.delete.confirm">
+                <source>Diesen Eintrag wirklich löschen?</source>
+            </trans-unit>
+            <trans-unit id="module.index.empty">
+                <source>Es wurden noch keine Losungen importiert.</source>
+            </trans-unit>
+
+            <trans-unit id="module.import.title">
+                <source>Losungen importieren</source>
+            </trans-unit>
+            <trans-unit id="module.import.hint">
+                <source>Bitte die Original-Excel-Datei von losungen.de (Spalten: Datum, Wtag, Sonntag, Losungsvers, Losungstext, Lehrtextvers, Lehrtext) oder eine CSV-Datei mit denselben Spalten hochladen. Es werden ausschließlich neue Datensätze eingefügt, bestehende Losungen werden nie verändert oder gelöscht.</source>
+            </trans-unit>
+            <trans-unit id="module.import.file_label">
+                <source>Excel- oder CSV-Datei</source>
+            </trans-unit>
+            <trans-unit id="module.import.submit">
+                <source>Datei prüfen</source>
+            </trans-unit>
+            <trans-unit id="module.import.back">
+                <source>Zurück zur Übersicht</source>
+            </trans-unit>
+
+            <trans-unit id="module.import.error.no_file">
+                <source>Es wurde keine Datei hochgeladen.</source>
+            </trans-unit>
+            <trans-unit id="module.import.error.extension">
+                <source>Ungültiges Dateiformat. Erlaubt sind: .xlsx, .xls, .csv</source>
+            </trans-unit>
+            <trans-unit id="module.import.error.headers">
+                <source>Die Spaltenüberschriften der Datei entsprechen nicht dem erwarteten Format (Datum, Wtag, Sonntag, Losungsvers, Losungstext, Lehrtextvers, Lehrtext). Der Import wurde abgebrochen, es wurden keine Daten gespeichert.</source>
+            </trans-unit>
+            <trans-unit id="module.import.error.read">
+                <source>Die Datei konnte nicht gelesen werden. Bitte Format und Inhalt prüfen.</source>
+            </trans-unit>
+            <trans-unit id="module.import.error.token">
+                <source>Die hochgeladene Datei ist nicht mehr verfügbar. Bitte erneut hochladen.</source>
+            </trans-unit>
+
+            <trans-unit id="module.preview.title">
+                <source>Vorschau: %s</source>
+            </trans-unit>
+            <trans-unit id="module.preview.summary">
+                <source>%1$d neue Datensätze, %2$d bereits vorhanden (werden übersprungen), %3$d ungültige Zeilen (werden übersprungen)</source>
+            </trans-unit>
+            <trans-unit id="module.preview.invalid.title">
+                <source>Ungültige Zeilen</source>
+            </trans-unit>
+            <trans-unit id="module.preview.invalid.row">
+                <source>Zeile</source>
+            </trans-unit>
+            <trans-unit id="module.preview.invalid.reason">
+                <source>Grund</source>
+            </trans-unit>
+            <trans-unit id="module.preview.confirm_button">
+                <source>%d Datensätze jetzt importieren</source>
+            </trans-unit>
+            <trans-unit id="module.preview.cancel_button">
+                <source>Abbrechen</source>
+            </trans-unit>
+            <trans-unit id="module.preview.nothing_to_import">
+                <source>Es gibt keine neuen Datensätze zum Importieren.</source>
+            </trans-unit>
+
+            <trans-unit id="module.confirm.success">
+                <source>%1$d Datensätze importiert, %2$d Duplikate übersprungen, %3$d ungültige Zeilen übersprungen.</source>
+            </trans-unit>
+
+            <trans-unit id="plugin.title">
+                <source>Losungen: Tageslosung</source>
+            </trans-unit>
+            <trans-unit id="plugin.description">
+                <source>Zeigt die Losung des aktuellen Tages.</source>
+            </trans-unit>
+            <trans-unit id="today.empty">
+                <source>Für heute ist noch keine Losung hinterlegt.</source>
+            </trans-unit>
+            <trans-unit id="frontend.heading">
+                <source>Losung für</source>
+            </trans-unit>
+            <trans-unit id="frontend.previous">
+                <source>Losung vom vorherigen Tag anzeigen</source>
+            </trans-unit>
+            <trans-unit id="frontend.next">
+                <source>Losung vom nächsten Tag anzeigen</source>
+            </trans-unit>
+            <trans-unit id="frontend.share">
+                <source>Teilen</source>
+            </trans-unit>
+            <trans-unit id="frontend.footer.copyright">
+                <source>© Evangelische Brüder-Unität – Herrnhuter Brüdergemeine</source>
+            </trans-unit>
+            <trans-unit id="frontend.footer.info">
+                <source>Weitere Informationen auf</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

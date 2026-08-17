@@ -1,0 +1,79 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Module" />
+<f:section name="Content">
+    <h1><f:translate key="module.index.title" extensionName="Watchword" /></h1>
+
+    <f:form action="index" method="post" class="mb-4">
+        <div class="row row-cols-auto align-items-end g-3">
+            <div class="col">
+                <label for="year" class="form-label"><f:translate key="module.index.filter.year" extensionName="Watchword" /></label>
+                <f:form.select
+                    id="year"
+                    name="year"
+                    class="form-select"
+                    options="{years}"
+                    value="{currentYear}"
+                    prependOptionLabel="{f:translate(key: 'module.index.filter.year.all', extensionName: 'Watchword')}"
+                    prependOptionValue="0"
+                    additionalAttributes="{onchange: 'this.form.submit()'}"
+                />
+            </div>
+            <div class="col">
+                <f:form.submit value="{f:translate(key: 'module.index.filter.submit', extensionName: 'Watchword')}" class="btn btn-default" />
+            </div>
+        </div>
+    </f:form>
+
+    <f:if condition="{paginator.paginatedItems}">
+        <f:then>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th><f:translate key="module.index.column.date" extensionName="Watchword" /></th>
+                        <th><f:translate key="module.index.column.weekday" extensionName="Watchword" /></th>
+                        <th><f:translate key="module.index.column.sunday_name" extensionName="Watchword" /></th>
+                        <th><f:translate key="module.index.column.watchword" extensionName="Watchword" /></th>
+                        <th><f:translate key="module.index.column.teaching" extensionName="Watchword" /></th>
+                        <th><f:translate key="module.index.column.actions" extensionName="Watchword" /></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <f:for each="{paginator.paginatedItems}" as="row">
+                        <tr>
+                            <td><f:format.date format="d.m.Y">{row.date}</f:format.date></td>
+                            <td>{row.weekday}</td>
+                            <td>{row.sundayName}</td>
+                            <td><strong>{row.watchwordVerse}</strong><br />{row.watchwordText}</td>
+                            <td><strong>{row.teachingVerse}</strong><br />{row.teachingText}</td>
+                            <td>
+                                <a href="{row.editUrl}" class="btn btn-default btn-sm" title="{f:translate(key: 'module.index.edit', extensionName: 'Watchword')}">
+                                    <core:icon identifier="actions-open" />
+                                </a>
+                                <a href="{row.deleteUrl}" class="btn btn-default btn-sm" title="{f:translate(key: 'module.index.delete', extensionName: 'Watchword')}"
+                                   onclick="return confirm('{f:translate(key: 'module.index.delete.confirm', extensionName: 'Watchword')}');">
+                                    <core:icon identifier="actions-delete" />
+                                </a>
+                            </td>
+                        </tr>
+                    </f:for>
+                </tbody>
+            </table>
+
+            <nav>
+                <f:if condition="{pagination.previousPageNumber}">
+                    <f:link.action action="index" arguments="{currentPage: pagination.previousPageNumber, year: currentYear}">&#171;</f:link.action>
+                </f:if>
+                {pagination.startRecordNumber} - {pagination.lastRecordNumber} / {paginator.numberOfPages}
+                <f:if condition="{pagination.nextPageNumber}">
+                    <f:link.action action="index" arguments="{currentPage: pagination.nextPageNumber, year: currentYear}">&#187;</f:link.action>
+                </f:if>
+            </nav>
+        </f:then>
+        <f:else>
+            <p><f:translate key="module.index.empty" extensionName="Watchword" /></p>
+        </f:else>
+    </f:if>
+</f:section>
+</html>

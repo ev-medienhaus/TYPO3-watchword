@@ -1,0 +1,102 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:if condition="{watchword}">
+    <f:then>
+    <section
+        class="watchwords"
+        data-watchwords
+        data-watchwords-endpoint="{f:uri.page(pageType: settings.ajaxTypeNum, absolute: 1)}"
+        data-watchwords-index="1"
+    >
+    <header class="watchwords__navigation">
+        <button
+            class="watchwords__navigation-button"
+            type="button"
+            data-watchwords-previous
+            aria-label="{f:translate(key: 'frontend.previous', extensionName: 'Watchword')}"
+        >
+            <span class="watchwords__navigation-icon watchwords__navigation-icon--previous" aria-hidden="true"></span>
+        </button>
+
+        <h2 class="watchwords__title">
+            <f:translate key="frontend.heading" extensionName="Watchword" />
+            <time datetime="{f:format.date(date: watchword.date, format: 'Y-m-d')}" data-watchwords-date>
+                <f:format.date format="d.m.Y">{watchword.date}</f:format.date>
+                ({watchword.weekday}<f:if condition="{watchword.sundayName}"> &#8211; {watchword.sundayName}</f:if>)
+            </time>
+        </h2>
+
+        <button
+            class="watchwords__navigation-button"
+            type="button"
+            data-watchwords-next
+            aria-label="{f:translate(key: 'frontend.next', extensionName: 'Watchword')}"
+        >
+            <span class="watchwords__navigation-icon watchwords__navigation-icon--next" aria-hidden="true"></span>
+        </button>
+    </header>
+
+    <div class="watchwords__body">
+        <article class="watchwords__content" data-watchwords-content>
+            <h3 class="watchwords__quote">
+                <a
+                    class="watchwords__quote-link"
+                    href="{f:uri.page()}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-watchwords-link
+                >
+                    {watchword.watchwordText}
+                </a>
+            </h3>
+            <div class="watchwords__reference-row">
+                <span class="watchwords__reference" data-watchwords-reference>{watchword.watchwordVerse}</span>
+                <button
+                    class="watchwords__share"
+                    type="button"
+                    data-watchwords-share
+                >
+                    <span class="watchwords__share-icon" aria-hidden="true"></span>
+                    <span class="watchwords__share-label" data-watchwords-share-label><f:translate key="frontend.share" extensionName="Watchword" /></span>
+                </button>
+            </div>
+        </article>
+
+        <article class="watchwords__content" data-watchwords-content>
+            <h3 class="watchwords__quote">
+                <a
+                    class="watchwords__quote-link"
+                    href="{f:uri.page()}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-watchwords-link
+                >
+                    {watchword.teachingText}
+                </a>
+            </h3>
+            <div class="watchwords__reference-row">
+                <span class="watchwords__reference" data-watchwords-reference>{watchword.teachingVerse}</span>
+                <button
+                    class="watchwords__share"
+                    type="button"
+                    data-watchwords-share
+                >
+                    <span class="watchwords__share-icon" aria-hidden="true"></span>
+                    <span class="watchwords__share-label" data-watchwords-share-label><f:translate key="frontend.share" extensionName="Watchword" /></span>
+                </button>
+            </div>
+        </article>
+    </div>
+
+    <footer class="watchwords__footer">
+        <p><f:translate key="frontend.footer.copyright" extensionName="Watchword" /></p>
+        <p><f:translate key="frontend.footer.info" extensionName="Watchword" /> <a href="https://www.losungen.de/" target="_blank" rel="noopener noreferrer">www.losungen.de</a></p>
+    </footer>
+
+    <span class="visually-hidden" data-watchwords-status aria-live="polite"></span>
+</section>
+    </f:then>
+    <f:else>
+        <p><f:translate key="today.empty" extensionName="Watchword" /></p>
+    </f:else>
+</f:if>
+</html>

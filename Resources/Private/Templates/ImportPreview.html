@@ -1,0 +1,43 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Module" />
+<f:section name="Content">
+    <h1>{f:translate(key: 'module.preview.title', extensionName: 'Watchword', arguments: {0: 'Losungen'})}</h1>
+
+    <p>{f:translate(key: 'module.preview.summary', extensionName: 'Watchword', arguments: {0: newCount, 1: duplicateCount, 2: invalidCount})}</p>
+
+    <f:if condition="{invalidRows}">
+        <details style="margin-bottom: 1em;">
+            <summary><f:translate key="module.preview.invalid.title" extensionName="Watchword" /> ({invalidCount})</summary>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th><f:translate key="module.preview.invalid.row" extensionName="Watchword" /></th>
+                        <th><f:translate key="module.preview.invalid.reason" extensionName="Watchword" /></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <f:for each="{invalidRows}" as="invalidRow">
+                        <tr>
+                            <td>{invalidRow.row}</td>
+                            <td>{invalidRow.reason}</td>
+                        </tr>
+                    </f:for>
+                </tbody>
+            </table>
+        </details>
+    </f:if>
+
+    <f:if condition="{newCount} > 0">
+        <f:then>
+            <form action="{confirmUrl}" method="post">
+                <button type="submit" class="btn btn-primary">{f:translate(key: 'module.preview.confirm_button', extensionName: 'Watchword', arguments: {0: newCount})}</button>
+                <f:link.action action="index" class="btn btn-default"><f:translate key="module.preview.cancel_button" extensionName="Watchword" /></f:link.action>
+            </form>
+        </f:then>
+        <f:else>
+            <p><f:translate key="module.preview.nothing_to_import" extensionName="Watchword" /></p>
+            <f:link.action action="index" class="btn btn-default"><f:translate key="module.preview.cancel_button" extensionName="Watchword" /></f:link.action>
+        </f:else>
+    </f:if>
+</f:section>
+</html>

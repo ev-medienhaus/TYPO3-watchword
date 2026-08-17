@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="de" datatype="plaintext" original="messages" date="2026-07-27" product-name="watchword">
+        <header/>
+        <body>
+            <trans-unit id="tx_watchword_domain_model_watchword">
+                <source>Losung</source>
+            </trans-unit>
+            <trans-unit id="tx_watchword_domain_model_watchword.date">
+                <source>Datum</source>
+            </trans-unit>
+            <trans-unit id="tx_watchword_domain_model_watchword.weekday">
+                <source>Wochentag</source>
+            </trans-unit>
+            <trans-unit id="tx_watchword_domain_model_watchword.sunday_name">
+                <source>Sonntag / Feiertag</source>
+            </trans-unit>
+            <trans-unit id="tx_watchword_domain_model_watchword.watchword_verse">
+                <source>Losungsvers</source>
+            </trans-unit>
+            <trans-unit id="tx_watchword_domain_model_watchword.watchword_text">
+                <source>Losungstext</source>
+            </trans-unit>
+            <trans-unit id="tx_watchword_domain_model_watchword.teaching_verse">
+                <source>Lehrtextvers</source>
+            </trans-unit>
+            <trans-unit id="tx_watchword_domain_model_watchword.teaching_text">
+                <source>Lehrtext</source>
+            </trans-unit>
+            <trans-unit id="tx_watchword_domain_model_watchword.year">
+                <source>Jahr</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

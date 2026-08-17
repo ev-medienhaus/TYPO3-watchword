@@ -1,0 +1,58 @@
+plugin {
+    tx_watchword {
+        view {
+            templateRootPaths.10 = EXT:watchword/Resources/Private/Templates/
+            partialRootPaths.10 = EXT:watchword/Resources/Private/Partials/
+            layoutRootPaths.10 = EXT:watchword/Resources/Private/Layouts/
+        }
+        settings {
+            ajaxTypeNum = {$plugin.tx_watchword.settings.ajaxTypeNum}
+        }
+    }
+    tx_watchword_list {
+        view < plugin.tx_watchword.view
+        settings < plugin.tx_watchword.settings
+    }
+    tx_watchword_ajax {
+        view < plugin.tx_watchword.view
+        settings < plugin.tx_watchword.settings
+    }
+}
+
+[{$plugin.tx_watchword.includeJavascript} == 1]
+    page.includeJSFooter.txWatchword = EXT:watchword/Resources/Public/JavaScript/Watchword.js
+    page.includeJSFooter.txWatchword {
+        async = 1
+        excludeFromConcatenation = 1
+    }
+[END]
+
+[{$plugin.tx_watchword.includeCss} == 1]
+    page.includeCSS.txWatchword = EXT:watchword/Resources/Public/Css/Watchword.css
+[END]
+
+
+watchwordAjax = PAGE
+watchwordAjax {
+    typeNum = {$plugin.tx_watchword.settings.ajaxTypeNum}
+    config {
+        disableAllHeaderCode = 1
+        additionalHeaders {
+            10 {
+                header = Content-Type: application/json; charset=utf-8
+                replace = 1
+            }
+        }
+        no_cache = 1
+        admPanel = 0
+        debug = 0
+        disablePrefixComment = 1
+    }
+    10 = USER_INT
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        vendorName = Emh
+        extensionName = Watchword
+        pluginName = Ajax
+    }
+}

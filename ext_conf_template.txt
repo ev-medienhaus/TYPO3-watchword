@@ -1,0 +1,2 @@
+# cat=basic; type=int+; label=Storage PID: Page ID (sysfolder) where imported Watchword records are stored
+storagePid = 0

@@ -1,0 +1,8 @@
+emh.elements.wizardTemplate.watchword_list {
+    iconIdentifier = module-watchword
+    title = LLL:EXT:watchword/Resources/Private/Language/locallang.xlf:plugin.title
+    description = LLL:EXT:watchword/Resources/Private/Language/locallang.xlf:plugin.description
+    tt_content_defValues {
+        CType = watchword_list
+    }
+}

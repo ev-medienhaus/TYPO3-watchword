@@ -1,0 +1,26 @@
+{
+  "name": "emh/watchword",
+  "type": "typo3-cms-extension",
+  "description": "Watchword - import and display of the daily \"Losungen\"",
+  "keywords": ["typo3","Losungen","import","show"],
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Medienhaus EKHN"
+    }
+  ],
+    "require": {
+        "typo3/cms-core": "^12.4 || ^13.4 || ^14.3",
+        "phpoffice/phpspreadsheet": "^2.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Emh\\Watchword\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "watchword"
+        }
+    }
+}

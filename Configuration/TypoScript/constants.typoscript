@@ -1,0 +1,9 @@
+plugin.tx_watchword {
+    # cat=plugin.tx_watchword/javascript; type=boolean; label=Include JavaScript: Load the Watchword frontend script (previous/next day via Ajax)
+    includeJavascript = 0
+    # cat=plugin.tx_watchword/css; type=boolean; label=Include CSS: Load the Watchword stylesheet (needed without the site frontend CSS)
+    includeCss = 0
+    settings {
+        ajaxTypeNum = 1786976500
+    }
+}
