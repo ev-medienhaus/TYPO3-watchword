@@ -64,8 +64,7 @@
             !Array.isArray(normalizedDay.content) ||
             normalizedDay.content.length < 2 ||
             normalizedDay.content.some(
-                (item) =>
-                    typeof item.quote !== 'string' || typeof item.reference !== 'string' || typeof item.url !== 'string',
+                (item) => typeof item.quote !== 'string' || typeof item.reference !== 'string',
             )
         ) {
             throw new Error('The watchwords response has an invalid format.');
@@ -91,7 +90,7 @@
         textarea.remove();
 
         if (!wasCopied) {
-            throw new Error('Copying the watchword link failed.');
+            throw new Error('Copying the watchword text failed.');
         }
     };
 
@@ -104,10 +103,7 @@
 
         for (const [index, contentItem] of contentItems.entries()) {
             const data = day.content[index];
-            const link = contentItem.querySelector('[data-watchwords-link]');
-
-            link.textContent = data.quote;
-            link.href = data.url;
+            contentItem.querySelector('[data-watchwords-quote]').textContent = data.quote;
             contentItem.querySelector('[data-watchwords-reference]').textContent = data.reference;
         }
     };
@@ -156,19 +152,21 @@
             shareButton.addEventListener('click', async () => {
                 const label = shareButton.querySelector('[data-watchwords-share-label]');
                 const contentItem = shareButton.closest('[data-watchwords-content]');
-                const shareUrl = contentItem.querySelector('[data-watchwords-link]').href;
+                const quote = contentItem.querySelector('[data-watchwords-quote]').textContent.trim();
+                const reference = contentItem.querySelector('[data-watchwords-reference]').textContent.trim();
+                const shareText = reference ? `${quote} , ${reference}` : quote;
 
                 if (feedbackTimers.has(shareButton)) {
                     clearTimeout(feedbackTimers.get(shareButton));
                 }
 
                 try {
-                    await copyText(shareUrl);
-                    label.textContent = 'Link kopiert';
-                    status.textContent = 'Link kopiert';
+                    await copyText(shareText);
+                    label.textContent = 'Text kopiert';
+                    status.textContent = 'Text kopiert';
                 } catch {
                     label.textContent = 'Kopieren fehlgeschlagen';
-                    status.textContent = 'Link konnte nicht kopiert werden';
+                    status.textContent = 'Text konnte nicht kopiert werden';
                 }
 
                 feedbackTimers.set(
