@@ -6,8 +6,10 @@
         return `${day}.${month}.${year}`;
     };
 
-    const formatVisibleDate = (day) => {
-        if (!day.weekday) {
+    const formatVisibleDate = (watchwords, day) => {
+        const showWeekdayAndSundayName = watchwords.dataset.watchwordsShowWeekdayAndSundayName === '1';
+
+        if (!showWeekdayAndSundayName || !day.weekday) {
             return day.date;
         }
 
@@ -98,7 +100,7 @@
         const date = watchwords.querySelector('[data-watchwords-date]');
         const contentItems = watchwords.querySelectorAll('[data-watchwords-content]');
 
-        date.textContent = formatVisibleDate(day);
+        date.textContent = formatVisibleDate(watchwords, day);
         date.dateTime = day.dateTime;
 
         for (const [index, contentItem] of contentItems.entries()) {

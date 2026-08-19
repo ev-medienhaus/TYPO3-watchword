@@ -59,6 +59,7 @@ TypoScript constants (Template → Constant Editor, category **plugin.tx_watchwo
 | Constant | Default | Description |
 |----------|---------|-------------|
 | `plugin.tx_watchword.settings.ajaxTypeNum` | `1786976500` | Frontend page type (`?type=`) for the JSON Ajax endpoint |
+| `plugin.tx_watchword.settings.showWeekdayAndSundayName` | `0` | Render weekday and optional Sunday/holiday name next to the date |
 | `plugin.tx_watchword.includeJavascript` | `0` | Load `EXT:watchword/Resources/Public/JavaScript/Watchword.js` |
 | `plugin.tx_watchword.includeCss` | `0` | Load `EXT:watchword/Resources/Public/Css/Watchword.css` |
 
@@ -151,7 +152,7 @@ The plugin **Losungen: Tageslosung** (`watchword_list`) is a content element. Ad
 #### Behaviour
 
 - Looks up the watchword for **today** (calendar date in UTC, time stripped).
-- Renders date, weekday, optional Sunday/holiday name, Losung and Lehrtext.
+- Renders date, Losung and Lehrtext. Weekday and Sunday/holiday name next to the date are off by default.
 - Previous/next buttons load the adjacent calendar day via Ajax without a page reload.
 - If no record exists for today, a fallback message is shown: *Für heute ist noch keine Losung hinterlegt.*
 
@@ -218,6 +219,18 @@ page.includeCSS.txWatchword = EXT:watchword/Resources/Public/Css/Watchword.css
 ```
 
 The CSS covers the full widget (navigation, quotes, share button, footer, loading state) including `.watchwords--default` (accent colour `#2481c5`). Add that modifier class on the root element if you want the default blue header without relying on `--color-80` from the site theme.
+
+#### Weekday and Sunday/holiday name
+
+By default the title shows only the date (`17.08.2026`). Weekday and Sunday/holiday name (`Mo – Pfingstmontag`) are not rendered.
+
+Enable them with the TypoScript constant (Constant Editor or sitepackage):
+
+```typoscript
+plugin.tx_watchword.settings.showWeekdayAndSundayName = 1
+```
+
+The title then looks like `17.08.2026 (Mo)` or, if a Sunday/holiday name exists, `17.08.2026 (Mo – Pfingstmontag)`. Ajax previous/next navigation uses the same setting (`data-watchwords-show-weekday-and-sunday-name` on the widget root).
 
 #### Template
 
@@ -288,6 +301,7 @@ TypoScript-Konstanten (Template → Constant Editor, Kategorie **plugin.tx_watch
 | Konstante | Standard | Beschreibung |
 |-----------|----------|--------------|
 | `plugin.tx_watchword.settings.ajaxTypeNum` | `1786976500` | Frontend-Page-Type (`?type=`) für den JSON-Ajax-Endpunkt |
+| `plugin.tx_watchword.settings.showWeekdayAndSundayName` | `0` | Wochentag und optionalen Sonntags-/Feiertagsnamen neben dem Datum anzeigen |
 | `plugin.tx_watchword.includeJavascript` | `0` | Lädt `EXT:watchword/Resources/Public/JavaScript/Watchword.js` |
 | `plugin.tx_watchword.includeCss` | `0` | Lädt `EXT:watchword/Resources/Public/Css/Watchword.css` |
 
@@ -380,7 +394,7 @@ Das Plugin **Losungen: Tageslosung** (`watchword_list`) ist ein Inhaltselement. 
 #### Verhalten
 
 - Sucht die Losung für **heute** (Kalenderdatum in UTC, ohne Uhrzeit).
-- Zeigt Datum, Wochentag, optionalen Sonntags-/Feiertagsnamen, Losung und Lehrtext.
+- Zeigt Datum, Losung und Lehrtext. Wochentag und Sonntags-/Feiertagsname neben dem Datum sind standardmäßig aus.
 - Die Buttons Vor/Zurück laden den benachbarten Kalendertag per Ajax, ohne Seitenreload.
 - Fehlt ein Datensatz für heute, erscheint der Hinweis: *Für heute ist noch keine Losung hinterlegt.*
 
@@ -447,6 +461,18 @@ page.includeCSS.txWatchword = EXT:watchword/Resources/Public/Css/Watchword.css
 ```
 
 Das CSS deckt das komplette Widget ab (Navigation, Zitate, Teilen-Button, Footer, Ladezustand), inklusive `.watchwords--default` (Akzentfarbe `#2481c5`). Die Modifier-Klasse am Wurzelelement setzen, wenn der blaue Standard-Header ohne `--color-80` aus dem Site-Theme gelten soll.
+
+#### Wochentag und Sonntags-/Feiertagsname
+
+Standardmäßig zeigt der Titel nur das Datum (`17.08.2026`). Wochentag und Sonntags-/Feiertagsname (`Mo – Pfingstmontag`) werden nicht gerendert.
+
+Einschalten über die TypoScript-Konstante (Constant Editor oder Sitepackage):
+
+```typoscript
+plugin.tx_watchword.settings.showWeekdayAndSundayName = 1
+```
+
+Der Titel lautet dann `17.08.2026 (Mo)` bzw. bei vorhandenem Sonntags-/Feiertagsnamen `17.08.2026 (Mo – Pfingstmontag)`. Die Ajax-Navigation Vor/Zurück verwendet dieselbe Einstellung (`data-watchwords-show-weekday-and-sunday-name` am Widget-Wurzelelement).
 
 #### Template
 

@@ -5,5 +5,7 @@ plugin.tx_watchword {
     includeCss = 0
     settings {
         ajaxTypeNum = 1786976500
+        # cat=plugin.tx_watchword/display; type=boolean; label=Show weekday and Sunday name: Render weekday and optional Sunday/holiday name next to the date
+        showWeekdayAndSundayName = 0
     }
 }

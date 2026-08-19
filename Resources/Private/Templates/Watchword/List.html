@@ -6,6 +6,7 @@
         data-watchwords
         data-watchwords-endpoint="{f:uri.page(pageType: settings.ajaxTypeNum, absolute: 1)}"
         data-watchwords-index="1"
+        data-watchwords-show-weekday-and-sunday-name="{settings.showWeekdayAndSundayName}"
     >
     <header class="watchwords__navigation">
         <button
@@ -21,7 +22,9 @@
             <f:translate key="frontend.heading" extensionName="Watchword" />
             <time datetime="{f:format.date(date: watchword.date, format: 'Y-m-d')}" data-watchwords-date>
                 <f:format.date format="d.m.Y">{watchword.date}</f:format.date>
-                ({watchword.weekday}<f:if condition="{watchword.sundayName}"> &#8211; {watchword.sundayName}</f:if>)
+                <f:if condition="{settings.showWeekdayAndSundayName} == 1">
+                    ({watchword.weekday}<f:if condition="{watchword.sundayName}"> &#8211; {watchword.sundayName}</f:if>)
+                </f:if>
             </time>
         </h2>
 

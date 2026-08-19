@@ -7,6 +7,7 @@ plugin {
         }
         settings {
             ajaxTypeNum = {$plugin.tx_watchword.settings.ajaxTypeNum}
+            showWeekdayAndSundayName = {$plugin.tx_watchword.settings.showWeekdayAndSundayName}
         }
     }
     tx_watchword_list {
