@@ -116,11 +116,13 @@ class WatchwordController extends ActionController
             ->setTargetPageType(0)
             ->build();
 
+        $showWeekdayAndSundayName = $this->shouldShowWeekdayAndSundayName();
+
         return [
             'date' => $date?->format(self::DATE_FORMAT) ?? '',
             'dateTime' => $date?->format('Y-m-d') ?? '',
-            'weekday' => $watchword->getWeekday(),
-            'sundayName' => $watchword->getSundayName(),
+            'weekday' => $showWeekdayAndSundayName ? $watchword->getWeekday() : '',
+            'sundayName' => $showWeekdayAndSundayName ? $watchword->getSundayName() : '',
             'content' => [
                 [
                     'quote' => $watchword->getWatchwordText(),
@@ -134,6 +136,11 @@ class WatchwordController extends ActionController
                 ],
             ],
         ];
+    }
+
+    private function shouldShowWeekdayAndSundayName(): bool
+    {
+        return (int)($this->settings['showWeekdayAndSundayName'] ?? 0) === 1;
     }
 
     private function jsonError(string $message, int $status): ResponseInterface

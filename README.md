@@ -176,13 +176,13 @@ Example request:
 | `date` | `d.m.Y` or `Y-m-d` | Currently displayed day |
 | `direction` | `previous` or `next` | Adjacent calendar day. Omit to return the given date |
 
-JSON response (used to replace date, quotes and verse references in the widget):
+JSON response (used to replace date, quotes and verse references in the widget). `weekday` and `sundayName` are empty unless `plugin.tx_watchword.settings.showWeekdayAndSundayName = 1`:
 
 ```json
 {
   "date": "17.08.2026",
   "dateTime": "2026-08-17",
-  "weekday": "Mo",
+  "weekday": "",
   "sundayName": "",
   "content": [
     { "quote": "Losungstext", "reference": "Losungsvers", "url": "https://example.org/page" },
@@ -230,7 +230,7 @@ Enable them with the TypoScript constant (Constant Editor or sitepackage):
 plugin.tx_watchword.settings.showWeekdayAndSundayName = 1
 ```
 
-The title then looks like `17.08.2026 (Mo)` or, if a Sunday/holiday name exists, `17.08.2026 (Mo – Pfingstmontag)`. Ajax previous/next navigation uses the same setting (`data-watchwords-show-weekday-and-sunday-name` on the widget root).
+The title then looks like `17.08.2026 (Mo)` or, if a Sunday/holiday name exists, `17.08.2026 (Mo – Pfingstmontag)`. Ajax previous/next uses the same setting: the JSON leaves `weekday` and `sundayName` empty when it is off.
 
 #### Template
 
@@ -418,13 +418,13 @@ Beispiel-Request:
 | `date` | `d.m.Y` oder `Y-m-d` | aktuell angezeigter Tag |
 | `direction` | `previous` oder `next` | Nachbar-Kalendertag. Weglassen, um genau dieses Datum zu liefern |
 
-JSON-Antwort (ersetzt Datum, Zitate und Bibelstellen im Widget):
+JSON-Antwort (ersetzt Datum, Zitate und Bibelstellen im Widget). `weekday` und `sundayName` bleiben leer, solange `plugin.tx_watchword.settings.showWeekdayAndSundayName = 1` nicht gesetzt ist:
 
 ```json
 {
   "date": "17.08.2026",
   "dateTime": "2026-08-17",
-  "weekday": "Mo",
+  "weekday": "",
   "sundayName": "",
   "content": [
     { "quote": "Losungstext", "reference": "Losungsvers", "url": "https://example.org/page" },
@@ -472,7 +472,7 @@ Einschalten über die TypoScript-Konstante (Constant Editor oder Sitepackage):
 plugin.tx_watchword.settings.showWeekdayAndSundayName = 1
 ```
 
-Der Titel lautet dann `17.08.2026 (Mo)` bzw. bei vorhandenem Sonntags-/Feiertagsnamen `17.08.2026 (Mo – Pfingstmontag)`. Die Ajax-Navigation Vor/Zurück verwendet dieselbe Einstellung (`data-watchwords-show-weekday-and-sunday-name` am Widget-Wurzelelement).
+Der Titel lautet dann `17.08.2026 (Mo)` bzw. bei vorhandenem Sonntags-/Feiertagsnamen `17.08.2026 (Mo – Pfingstmontag)`. Die Ajax-Navigation nutzt dieselbe Einstellung: in der JSON bleiben `weekday` und `sundayName` leer, wenn sie aus ist.
 
 #### Template
 
