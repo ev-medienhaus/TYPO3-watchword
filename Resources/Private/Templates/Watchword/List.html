@@ -20,7 +20,7 @@
         <h2 class="watchwords__title">
             <f:translate key="frontend.heading" extensionName="Watchword" />
             <time datetime="{f:format.date(date: watchword.date, format: 'Y-m-d')}" data-watchwords-date>
-                <f:format.date format="d.m.Y">{watchword.date}</f:format.date>
+                <span data-watchwords-date-label>{watchword.date -> f:format.date(pattern: 'd.M.yyyy')}</span>
                 <f:if condition="{settings.showWeekdayAndSundayName} == 1">
                     ({watchword.weekday}<f:if condition="{watchword.sundayName}"> &#8211; {watchword.sundayName}</f:if>)
                 </f:if>

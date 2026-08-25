@@ -88,7 +88,7 @@ class WatchwordController extends ActionController
     private function parseDate(string $dateString): \DateTimeImmutable|false
     {
         $utc = new \DateTimeZone('UTC');
-        foreach ([self::DATE_FORMAT, 'Y-m-d'] as $format) {
+        foreach ([self::DATE_FORMAT, 'j.n.Y', 'Y-m-d'] as $format) {
             $date = \DateTimeImmutable::createFromFormat('!' . $format, $dateString, $utc);
             if ($date !== false) {
                 return $date;
@@ -119,7 +119,7 @@ class WatchwordController extends ActionController
         $showWeekdayAndSundayName = $this->shouldShowWeekdayAndSundayName();
 
         return [
-            'date' => $date?->format(self::DATE_FORMAT) ?? '',
+            'date' => $date?->format('j.n.Y') ?? '',
             'dateTime' => $date?->format('Y-m-d') ?? '',
             'weekday' => $showWeekdayAndSundayName ? $watchword->getWeekday() : '',
             'sundayName' => $showWeekdayAndSundayName ? $watchword->getSundayName() : '',
