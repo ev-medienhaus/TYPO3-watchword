@@ -113,8 +113,13 @@ class WatchwordImportService
 
         for ($rowNumber = 2; $rowNumber <= $highestRow; $rowNumber++) {
             $values = [];
+            $date = null;
             foreach ($columnMap as $columnName => $columnIndex) {
-                $values[$columnName] = $sheet->getCell([$columnIndex + 1, $rowNumber]);
+                $cell = $sheet->getCell([$columnIndex + 1, $rowNumber]);
+                if ($columnName === 'Datum') {
+                    $date = $this->parseDate($cell);
+                }
+                $values[$columnName] = trim((string)$cell->getFormattedValue());
             }
 
             if ($this->isEmptyRow($values)) {
@@ -122,7 +127,6 @@ class WatchwordImportService
             }
 
             $reasons = [];
-            $date = $this->parseDate($values['Datum']);
             if ($date === null) {
                 $reasons[] = 'Datum ungültig oder leer';
             }
@@ -131,7 +135,7 @@ class WatchwordImportService
                 if (!$required || $columnName === 'Datum') {
                     continue;
                 }
-                if (trim((string)$values[$columnName]->getFormattedValue()) === '') {
+                if ($values[$columnName] === '') {
                     $reasons[] = $columnName . ' ist leer';
                 }
             }
@@ -157,12 +161,12 @@ class WatchwordImportService
             $parsedRows[$timestamp] = [
                 'date' => $timestamp,
                 'year' => (int)$date->format('Y'),
-                'weekday' => trim((string)$values['Wtag']->getFormattedValue()),
-                'sundayName' => trim((string)$values['Sonntag']->getFormattedValue()),
-                'watchwordVerse' => trim((string)$values['Losungsvers']->getFormattedValue()),
-                'watchwordText' => trim((string)$values['Losungstext']->getFormattedValue()),
-                'teachingVerse' => trim((string)$values['Lehrtextvers']->getFormattedValue()),
-                'teachingText' => trim((string)$values['Lehrtext']->getFormattedValue()),
+                'weekday' => $values['Wtag'],
+                'sundayName' => $values['Sonntag'],
+                'watchwordVerse' => $values['Losungsvers'],
+                'watchwordText' => $values['Losungstext'],
+                'teachingVerse' => $values['Lehrtextvers'],
+                'teachingText' => $values['Lehrtext'],
             ];
         }
 
@@ -252,8 +256,8 @@ class WatchwordImportService
      */
     private function isEmptyRow(array $values): bool
     {
-        foreach ($values as $cell) {
-            if (trim((string)$cell->getFormattedValue()) !== '') {
+        foreach ($values as $value) {
+            if ($value !== '') {
                 return false;
             }
         }

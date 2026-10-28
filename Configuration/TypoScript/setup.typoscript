@@ -52,7 +52,6 @@ watchwordAjax {
     10 = USER_INT
     10 {
         userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-        vendorName = Emh
         extensionName = Watchword
         pluginName = Ajax
     }
