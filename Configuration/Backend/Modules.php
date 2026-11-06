@@ -7,7 +7,7 @@ return [
         'parent' => 'web',
         'position' => ['after' => 'web_list'],
         'access' => 'user',
-        'iconIdentifier' => 'module-watchword',
+        'iconIdentifier' => 'be_modul_watchword',
         'path' => '/module/web/watchword',
         'labels' => 'LLL:EXT:watchword/Resources/Private/Language/locallang.xlf',
         'extensionName' => 'Watchword',

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+	<path fill="var(--icon-color-accent, #ff8700)" d="M48 16v28H16V16h32m2-4H14c-1.1 0-2 .9-2 2v32c0 1.1.9 2 2 2h36c1.1 0 2-.9 2-2V14c0-1.1-.9-2-2-2Z"/>
+	<g transform="translate(32 30) scale(0.7) translate(-32 -32)">
+		<circle cx="32" cy="32" r="17" fill="none" stroke="currentColor" stroke-width="2.6"/>
+		<g fill="currentColor" fill-rule="evenodd">
+			<path d="M20 24h4.6c5.6 0 8.4 3.2 8.4 8s-2.8 8-8.4 8H20zm3.6 3.2v9.6h1.4c3.4 0 5-2 5-4.8s-1.6-4.8-5-4.8z"/>
+			<path d="M35.4 24h3.2v12.8h5.2v3.2H35.4z"/>
+		</g>
+	</g>
+</svg>
